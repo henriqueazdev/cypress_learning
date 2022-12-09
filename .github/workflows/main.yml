@@ -7,19 +7,8 @@ on:
     branches: ["main"]
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v3
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
-        with:
-          cache: "npm"
-      - run: npm ci
-      - run: npm run build --if-present
-
   cypress-run:
+    name: Cypress E2E
     runs-on: ubuntu-latest
 
     strategy:
@@ -42,4 +31,4 @@ jobs:
           browser: chrome
           record: true
         env:
-          CYPRESS_RECORD_KEY: 08c4b86a-7d32-4bbf-bf1c-d86f1278c3ab
+          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
