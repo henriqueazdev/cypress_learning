@@ -34,4 +34,6 @@ jobs:
       - name: Cypress run
         uses: cypress-io/github-action@v4
         with:
-          browser: firefox
+          browser: chrome
+          record: true
+          key: yuamho
