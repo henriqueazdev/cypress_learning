@@ -11,10 +11,6 @@ jobs:
     name: Cypress E2E
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        node-version: [16.16.0]
-
     container: cypress/browsers:node16.16.0-chrome107-ff107-edge
 
     steps:
@@ -25,10 +21,9 @@ jobs:
         uses: cypress-io/github-action@v4
         with:
           wait-on: "http://localhost:3000"
-          node-version: ${{ matrix.node-version }}
           build: npm run build
           start: npm start
           browser: chrome
           record: true
         env:
-          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+          CYPRESS_RECORD_KEY: ${{ cypress-env.CYPRESS_RECORD_KEY }}
