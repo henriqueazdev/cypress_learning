@@ -36,4 +36,5 @@ jobs:
         with:
           browser: chrome
           record: true
-          key: yuamho
+        env:
+          CYPRESS_RECORD_KEY: 08c4b86a-7d32-4bbf-bf1c-d86f1278c3ab
